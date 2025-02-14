@@ -172,8 +172,7 @@ class _HomeActivityState extends State<HomeActivity> {
           ),
 
           // Future Builder======================
-          Card(
-            child: ListTile(
+          Card(child: ListTile(
               title: Text("Future Builder"),
               leading: Icon(Icons.hourglass_bottom_outlined,
                   color: Colors.blue),
@@ -231,11 +230,27 @@ class _HomeActivityState extends State<HomeActivity> {
                 },
               )),
 
-          Card(child: ListTile(title: Text("Gesture Detector"),leading: Icon(Icons.gesture),),),
+          //Gesture===================================
+          Card(
+            child: GestureDetector(
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Gesture Tapped")),
+                );
+              },
+              onDoubleTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Gesture Double Tapped")),
+                );
+              },
+              child: ListTile(
+                title: Text("Gesture Detector"),
+                leading: Icon(Icons.gesture, color: Colors.deepPurpleAccent),
+              ),
+            ),
+          ),
 
-
-
-
+          Card(child: ListTile(title: Text("Tooltip"),leading: Icon(Icons.info, color: Colors.cyan,),),),
 
 
 
@@ -254,7 +269,7 @@ class _HomeActivityState extends State<HomeActivity> {
           Card(
             child: ListTile(
               title: Text("Animated Container"),
-              leading: Icon(Icons.animation),
+              leading: Icon(Icons.animation,color: Colors.tealAccent,),
               onTap: () {
                 setState(() {
                   boxHeight = boxHeight == 50 ? 50 : 50;
